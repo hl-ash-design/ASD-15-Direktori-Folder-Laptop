@@ -1,9 +1,10 @@
 import os
+from pathlib import Path
 
-def direction():
-    pass
+def directory():
+    print(os.getcwd())
 
-def changeDirection(req):
+def changeDirectory():
     pass
 
 def createFolder():
@@ -16,6 +17,9 @@ def deleteFolder():
     pass
 
 def renameFolder():
+    pass
+
+def searchDirectory():
     pass
 
 def printHelp():
