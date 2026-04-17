@@ -80,7 +80,12 @@ class DirectoryTree:
                 self.current = child
                 return 
         print("Folder tidak ditemukan.")
-
+        
+    def cek_child(self):
+        print("====Isi Folder====")
+        for  child in self.current.children:
+            print(f'[{child.tipe}] {child.name}')
+    
     def kembali(self):
         prev = self.history.pop()
         if prev:
@@ -121,6 +126,7 @@ def main():
             tree.tampilan()
 
         elif pilihan == "3":
+            tree.cek_child()
             nama = input("Masuk: ")
             tree.masuk(nama)
 
