@@ -83,8 +83,9 @@ class DirectoryTree:
         
     def cek_child(self):
         print("====Isi Folder====")
-        for  child in self.current.children:
-            print(f'[{child.tipe}] {child.name}')
+        for child in self.current.children:
+            if child.tipe == 'Folder':
+                print(f'[{child.tipe}] {child.name}')
     
     def kembali(self):
         prev = self.history.pop()
