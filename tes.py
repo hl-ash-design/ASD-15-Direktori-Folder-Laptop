@@ -106,11 +106,10 @@ def main():
         print("2. Lihat isi folder")
         print("3. Masuk folder")
         print("4. Ganti nama")
-        print("5. Pindah direktori")
-        print("6. Hapus")
-        print("7. Cari")
-        print("8. Kambali")
-        print("9. Keluar")
+        print("5. Hapus")
+        print("6. Cari")
+        print("7. Kambali")
+        print("8. Keluar")
 
         pilihan = input("Pilih: ")
 
@@ -130,18 +129,18 @@ def main():
             baru = input("Nama baru: ")
             tree.ubah_nama(lama, baru)
 
-        elif pilihan == "6":
+        elif pilihan == "5":
             nama = input("Masukan nama yang ingin dihapus: ")
             tree.hapus(nama)
 
-        elif pilihan == "7":
+        elif pilihan == "6":
             keyword = input("Masukkan kata kunci: ")
             tree.cari(tree.root, keyword)
 
-        elif pilihan == "8":
+        elif pilihan == "7":
             tree.kembali()
 
-        elif pilihan == "9":
+        elif pilihan == "8":
             print("Keluar dari program.")
             break
 
