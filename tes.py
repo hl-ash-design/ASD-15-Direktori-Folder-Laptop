@@ -115,7 +115,8 @@ def main():
 
         if pilihan == "1":
             nama = input("Nama: ")
-            tree.tambah(nama, "Folder")
+            tipe = input("Tipe (Folder/File): ")
+            tree.tambah(nama, tipe)
 
         elif pilihan == "2":
             tree.tampilan()
