@@ -27,21 +27,26 @@ class DirectoryTree:
         self.current = self.root
         self.history = stack()
 
+    # Fungsi Untuk menambah folder
     def tambah(self, nama, tipe):
+        # Cek input tipe, apakah Folder atau bukan
         if tipe not in ["Folder","File"]:
             print("Tipe harus 'folder' atau 'file'")
             return
         
+        # Cek apakah nama file/folder sudah digunakan
         for child in self.current.children:
             if child.name == nama:
                 print("Nama sudah digunakan!")
                 return
-            
+        
+        # simpan dengan nama,tipe Folder/File
         node = Node(nama, tipe)
         node.parent = self.current
         self.current.children.append(node)
         print(f"{tipe} berhasil dibuat.")
 
+    # Fitur menampilkan child(jika current bertipe folder)
     def tampilan(self):
         if not self.current.children:
             return
@@ -82,7 +87,8 @@ class DirectoryTree:
         print("Folder tidak ditemukan.")
         
     def cek_child(self):
-        print("====Isi Folder====")
+        print('\n', 'Path: ',self.path())
+        print("\n====Daftar Folder====")
         for child in self.current.children:
             if child.tipe == 'Folder':
                 print(f'[{child.tipe}] {child.name}')
@@ -111,9 +117,9 @@ def main():
         print("1. Tambah Folder/file")
         print("2. Lihat isi folder")
         print("3. Masuk folder")
-        print("4. Ganti nama")
-        print("5. Hapus")
-        print("6. Cari")
+        print("4. Ganti Nama ")
+        print("5. Hapus File/Folder")
+        print("6. Cari File/Folder")
         print("7. Kambali")
         print("8. Keluar")
 
@@ -133,7 +139,8 @@ def main():
             tree.masuk(nama)
 
         elif pilihan == "4":
-            lama = input("Nama lama: ")
+            tree.cek_child()
+            lama = input("Nama yang ingin diubah: ")
             baru = input("Nama baru: ")
             tree.ubah_nama(lama, baru)
 
