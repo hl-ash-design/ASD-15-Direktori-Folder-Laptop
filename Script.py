@@ -2,10 +2,22 @@ import os
 from pathlib import Path
 
 def directory():
-    print(os.getcwd())
+    print("Current directory:", os.getcwd())
+    print("Contents:")
+    for item in os.listdir():
+        print(f"  {item}")
 
 def changeDirectory():
-    pass
+    path = input("Enter the path to change to: ")
+    try:
+        os.chdir(path)
+        print("Changed directory to:", os.getcwd())
+    except FileNotFoundError:
+        print("Directory not found.")
+    except NotADirectoryError:
+        print("Not a directory.")
+    except PermissionError:
+        print("Permission denied.")
 
 def createFolder():
     pass
