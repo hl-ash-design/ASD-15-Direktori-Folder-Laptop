@@ -28,12 +28,25 @@ class DirectoryTree:
         self.history = stack()
 
     # Fungsi Untuk menambah folder
-    def tambah(self, nama, tipe):
+    def tambah(self):
+        print("\n===Pilih tipe===")
+        print("[FOLDER]")
+        print("[FILE]")
+        def inputTipe():
+            while True:
+                pilihan = input("Pilih tipe (1/2): ")
+                if pilihan == "1":
+                    return "Folder"
+                elif pilihan == "2":
+                    return "File"
+                else:
+                    print("Tipe salah. Silahkan input ulang") 
+        tipe = inputTipe()
         # Cek input tipe, apakah Folder atau bukan
         if tipe not in ["Folder","File"]:
             print("Tipe harus 'folder' atau 'file'")
             return
-        
+        nama = input(f"Masukan nama {tipe}: ")
         # Cek apakah nama file/folder sudah digunakan
         for child in self.current.children:
             if child.name == nama:
@@ -74,7 +87,7 @@ class DirectoryTree:
     def cari(self, node, keyword):
         if keyword.lower() in node.name.lower():
             print("Ditemukan:", node.name)
-
+            
         for child in node.children:
             self.cari(child, keyword)
 
@@ -114,7 +127,7 @@ def main():
     while True:
         print("\nPath:", tree.path())
         print("\nMenu:")
-        print("1. Tambah Folder/file")
+        print("1. Buat Folder/file")
         print("2. Lihat isi folder")
         print("3. Masuk folder")
         print("4. Ganti Nama ")
@@ -126,9 +139,7 @@ def main():
         pilihan = input("Pilih: ")
 
         if pilihan == "1":
-            nama = input("Nama: ")
-            tipe = input("Tipe (Folder/File): ")
-            tree.tambah(nama, tipe)
+            tree.tambah()
 
         elif pilihan == "2":
             tree.tampilan()
