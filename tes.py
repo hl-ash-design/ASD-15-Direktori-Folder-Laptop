@@ -62,6 +62,7 @@ class DirectoryTree:
     # Fitur menampilkan child(jika current bertipe folder)
     def tampilan(self):
         if not self.current.children:
+            print("Folder kosong")
             return
         
         sorted_children = sorted(self.current.children, key=lambda x: x.name.lower())
