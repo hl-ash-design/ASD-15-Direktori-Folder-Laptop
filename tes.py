@@ -27,6 +27,8 @@ class DirectoryTree:
         self.current = self.root
         self.history = stack()
 
+    def cek_current(self):
+        return self.current.name
     # Fungsi Untuk menambah folder
     def tambah(self):
         print("\n===Pilih tipe===")
@@ -129,8 +131,8 @@ def main():
         print("\nPath:", tree.path())
         print("\nMenu:")
         print("1. Buat Folder/file")
-        print("2. Lihat isi folder")
-        print("3. Masuk folder")
+        print("2. Lihat Isi Folder", tree.cek_current())
+        print("3. Masuk ke Folder")
         print("4. Ganti Nama ")
         print("5. Hapus File/Folder")
         print("6. Cari File/Folder")
