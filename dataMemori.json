@@ -1,0 +1,44 @@
+{
+    "name": "home",
+    "tipe": "Folder",
+    "children": [
+        {
+            "name": "Algoritma",
+            "tipe": "Folder",
+            "children": [
+                {
+                    "name": "Sort",
+                    "tipe": "Folder",
+                    "children": [
+                        {
+                            "name": "Bitcoin",
+                            "tipe": "Folder",
+                            "children": [],
+                            "parent": "Sort"
+                        },
+                        {
+                            "name": "Bitcoin.txt",
+                            "tipe": "File",
+                            "children": [],
+                            "parent": "Sort"
+                        }
+                    ],
+                    "parent": "Algoritma"
+                },
+                {
+                    "name": "Data.txt",
+                    "tipe": "File",
+                    "children": [],
+                    "parent": "Algoritma"
+                }
+            ],
+            "parent": "home"
+        },
+        {
+            "name": "Data.txt",
+            "tipe": "File",
+            "children": [],
+            "parent": "home"
+        }
+    ]
+}

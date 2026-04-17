@@ -1,3 +1,4 @@
+import json
 class Node:
     def __init__(self, name, tipe):
         self.name = name
@@ -19,14 +20,24 @@ class stack:
     
     def is_empty(self):
         return len(self.data) == 0
+nama_file = "dataMemori.json"
+def json_to_node(json):
+    node = Node(json['name'], json['tipe'])
+    for child_data in json.get('children', []):
+        node.children.append(json_to_node(child_data))
+    return node
 
+def bacaData(nama_file):
+        with open(nama_file, "r", encoding="utf-8") as f:
+            data_dict = json.load(f)
+        return json_to_node(data_dict)
 
 class DirectoryTree:
     def __init__(self):
-        self.root = Node("Home","Folder")
+        self.root = bacaData(nama_file)
         self.current = self.root
         self.history = stack()
-
+    
     def cek_current(self):
         return self.current.name
     # Fungsi Untuk menambah folder
@@ -57,6 +68,7 @@ class DirectoryTree:
         
         # simpan dengan nama,tipe Folder/File
         node = Node(nama, tipe)
+        node.children = []
         node.parent = self.current
         self.current.children.append(node)
         print(f"{tipe} berhasil dibuat.")
@@ -66,18 +78,26 @@ class DirectoryTree:
         if not self.current.children:
             print("Folder kosong")
             return
-        
+        # garis = "│   " * level + "├──" 
         sorted_children = sorted(self.current.children, key=lambda x: x.name.lower())
-
+        print(f"===Isi Folder{self.current.name}===")
         for child in sorted_children:
             print(f"[{child.tipe.upper()}] {child.name}")
 
     def ubah_nama(self, nama_lama, nama_baru):
+        cek = False
+        for child in self.current.children:
+            if child.name == nama_baru:
+                print("Nama sudah digunakan!")
+                return
+
         for child in self.current.children:
             if child.name == nama_lama:
                 child.name = nama_baru
                 print("Berhasil mengganti nama.")
-        print("Folder/file tidak ditemukan")
+                cek = True
+        if not cek:
+            print("Folder/file tidak ditemukan")
         
     def hapus(self, nama):
         for child in self.current.children:
@@ -108,7 +128,12 @@ class DirectoryTree:
         for child in self.current.children:
             if child.tipe == 'Folder':
                 print(f'[{child.tipe}] {child.name}')
-    
+    def cek_all_child(self):
+        print('\n', 'Path: ',self.path())
+        print("\n====Daftar Folder====")
+        
+        for child in self.current.children:
+            print(f'[{child.tipe}] {child.name}')
     def kembali(self):
         prev = self.history.pop()
         if prev:
@@ -123,6 +148,22 @@ class DirectoryTree:
             path_list.append(node.name)
             node = node.parent
         return "/".join(reversed(path_list))
+    def node_ke_dict(self, node):
+        data = {
+            "name" : node.name,
+            "tipe" : node.tipe,
+            "children" : [self.node_ke_dict(child) for child in node.children]
+        }
+        if node.parent is not None:
+            data['parent'] = node.parent.name
+
+        return data
+    def simpan_json(self, filename):
+        data_dict = self.node_ke_dict(self.root)
+
+        with open(filename, 'w', encoding='utf-8') as f:
+            json.dump(data_dict, f, indent=4)
+        print(f"Berhasil simpan data")
     
 def main():
     tree = DirectoryTree()
@@ -137,7 +178,8 @@ def main():
         print("5. Hapus File/Folder")
         print("6. Cari File/Folder")
         print("7. Kambali")
-        print("8. Keluar")
+        print("8. Simpan ke Json")
+        print("9. Keluar")
 
         pilihan = input("Pilih: ")
 
@@ -153,7 +195,7 @@ def main():
             tree.masuk(nama)
 
         elif pilihan == "4":
-            tree.cek_child()
+            tree.cek_all_child()
             lama = input("Nama yang ingin diubah: ")
             baru = input("Nama baru: ")
             tree.ubah_nama(lama, baru)
@@ -170,6 +212,9 @@ def main():
             tree.kembali()
 
         elif pilihan == "8":
+            tree.simpan_json(nama_file)
+
+        elif pilihan == "9":
             print("Keluar dari program.")
             break
 
