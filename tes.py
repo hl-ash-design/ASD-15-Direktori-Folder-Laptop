@@ -102,7 +102,7 @@ def main():
     while True:
         print("\nPath:", tree.path())
         print("\nMenu:")
-        print("1. Tambah folder/file")
+        print("1. Tambah Folder/file")
         print("2. Lihat isi folder")
         print("3. Masuk folder")
         print("4. Ganti nama")
@@ -114,34 +114,34 @@ def main():
 
         pilihan = input("Pilih: ")
 
-        if pilihan == "1.":
+        if pilihan == "1":
             nama = input("Nama: ")
-            tree.tambah(nama, "folder")
+            tree.tambah(nama, "Folder")
 
-        elif pilihan == "2.":
+        elif pilihan == "2":
             tree.tampilan()
 
-        elif pilihan == "3.":
+        elif pilihan == "3":
             nama = input("Masuk: ")
             tree.masuk(nama)
 
-        elif pilihan == "4.":
+        elif pilihan == "4":
             lama = input("Nama lama: ")
             baru = input("Nama baru: ")
-            tree.rename(lama, baru)
+            tree.ubah_nama(lama, baru)
 
-        elif pilihan == "5.":
-            nama = input("Nama yang dihapus.")
+        elif pilihan == "6":
+            nama = input("Masukan nama yang ingin dihapus: ")
             tree.hapus(nama)
 
-        elif pilihan == "6.":
+        elif pilihan == "7":
             keyword = input("Masukkan kata kunci: ")
             tree.cari(tree.root, keyword)
 
-        elif pilihan == "7.":
+        elif pilihan == "8":
             tree.kembali()
 
-        elif pilihan == "9.":
+        elif pilihan == "9":
             print("Keluar dari program.")
             break
 
