@@ -1,12 +1,13 @@
 from datetime import datetime
 import time
 import json
+import os
 
 class Node:
-    def __init__(self, name, tipe, time):
+    def __init__(self, name, tipe, mdtime=datetime.now().strftime("%d/%m/%Y %H:%M %p")):
         self.name = name
         self.tipe = tipe
-        self.modtime = time
+        self.modtime = mdtime
         self.children = []
         self.parent = None
 
@@ -24,10 +25,13 @@ class stack:
     
     def is_empty(self):
         return len(self.data) == 0
-    
-nama_file = "dataMemori.json"
+
+# Mengubah metode akses json 
+script_dir = os.path.dirname(os.path.abspath(__file__))
+nama_file = os.path.join(script_dir, "dataMemori.json")
+
 def json_to_node(json):
-        node = Node(json['name'], json['tipe'], json['modtime'])
+        node = Node(json['name'], json['tipe'])
         for child_data in json.get('children', []):
             node.children.append(json_to_node(child_data))
         return node
@@ -73,7 +77,7 @@ class DirectoryTree:
                 print("Nama sudah digunakan!")
                 return
         
-        modtime = datetime.now().strftime("%d/%m?%Y %H:%M %p")
+        modtime = datetime.now().strftime("%d/%m/%Y %H:%M %p")
 
         # simpan dengan nama,tipe Folder/File
         node = Node(nama, tipe, modtime)
@@ -104,7 +108,7 @@ class DirectoryTree:
             if child.name == nama_lama:
                 child.name = nama_baru
                 print("Berhasil mengganti nama.")
-                child.modtime = datetime.now().strftime("%d/%m?%Y %H:%M %p")
+                child.modtime = datetime.now().strftime("%d/%m/%Y %H:%M %p")
                 cek = True
         if not cek:
             print("Folder/file tidak ditemukan")
@@ -177,7 +181,7 @@ class DirectoryTree:
 
         with open(filename, 'w', encoding='utf-8') as f:
             json.dump(data_dict, f, indent=4)
-        print(f"Berhasil simpan data")
+        print("Berhasil simpan data")
     
 def main():
     tree = DirectoryTree()
@@ -235,7 +239,7 @@ def main():
         else:
             print("Input tidak valid!")
         
-        time.sleep(5)
+        time.sleep(3)
 
 if __name__ == "__main__":
     main()
