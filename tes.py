@@ -153,7 +153,7 @@ class DirectoryTree:
             while parent_node:
                 parent_path.append(parent_node.name)
                 parent_node = parent_node.parent
-            print("Ditemukan:", f"{node.name} [Path: {('/'.join(reversed(parent_path)))}]")
+            print("Ditemukan:", f"{node.name} [Path: {('/'.join(reversed(parent_path)))}/{node.name}]")
 
         for child in node.children:
             self.cari(child, keyword)
