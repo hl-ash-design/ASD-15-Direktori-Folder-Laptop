@@ -68,6 +68,13 @@
             "modtime": "03/06/2026 13:55 PM",
             "children": [],
             "parent": "home"
+        },
+        {
+            "name": "Scoantil.txt",
+            "tipe": "File",
+            "modtime": "03/06/2026 14:31 PM",
+            "children": [],
+            "parent": "home"
         }
     ]
 }

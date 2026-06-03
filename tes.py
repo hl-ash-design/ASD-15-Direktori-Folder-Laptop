@@ -107,7 +107,7 @@ class DirectoryTree:
         sorted_children = sorted(self.current.children, key=lambda x: x.name.lower())
         print(f"===Isi Folder {self.current.name}===")
         for child in sorted_children:
-            print(f"[{"📄" if child.tipe.upper() == "FILE" else "📁"}] {child.name.ljust(25)} {child.modtime}")
+            print(f"[{"📄" if child.tipe.upper() == "FILE" else "📁"}] {child.name.ljust(25) if len(child.name) < 25 else child.name[:22] + '...'} {child.modtime}")
 
     def ubah_nama(self, nama_lama, nama_baru):
         
@@ -130,11 +130,10 @@ class DirectoryTree:
         if not self.current.children:
             print("Folder kosong")
             return
-        # garis = "│   " * level + "├──"
         sorted_children = sorted(self.current.children, key=lambda x: x.name.lower())
         print(f"===Isi Folder {self.current.name}===")
         for child in sorted_children:
-            print(f"[{"📄" if child.tipe.upper() == "FILE" else "📁"}] {child.name.ljust(25)} {child.modtime}")
+            print(f"[{"📄" if child.tipe.upper() == "FILE" else "📁"}] {child.name.ljust(25) if len(child.name) < 25 else child.name[:22] + '...'} {child.modtime}")
         nama = input("Masukan Nama yang ingin dihapus: ")
         for child in self.current.children:
             if child.name == nama:
@@ -166,7 +165,7 @@ class DirectoryTree:
         sorted_children = sorted(self.current.children, key=lambda x: x.name.lower())
         print(f"===Isi Folder {self.current.name}===")
         for child in sorted_children:
-            print(f"[{"📄" if child.tipe.upper() == "FILE" else "📁"}] {child.name.ljust(25)} {child.modtime}")
+            print(f"[{"📄" if child.tipe.upper() == "FILE" else "📁"}] {child.name.ljust(25) if len(child.name) < 25 else child.name[:22] + '...'} {child.modtime}")
         nama = input("Masuk: ")
         if self.current.children:
             for child in self.current.children:
