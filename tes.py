@@ -1,8 +1,12 @@
+from datetime import datetime
+import time
 import json
+
 class Node:
-    def __init__(self, name, tipe):
+    def __init__(self, name, tipe, time):
         self.name = name
         self.tipe = tipe
+        self.modtime = time
         self.children = []
         self.parent = None
 
@@ -20,17 +24,18 @@ class stack:
     
     def is_empty(self):
         return len(self.data) == 0
+    
 nama_file = "dataMemori.json"
 def json_to_node(json):
-    node = Node(json['name'], json['tipe'])
-    for child_data in json.get('children', []):
-        node.children.append(json_to_node(child_data))
-    return node
+        node = Node(json['name'], json['tipe'], json['modtime'])
+        for child_data in json.get('children', []):
+            node.children.append(json_to_node(child_data))
+        return node
 
 def bacaData(nama_file):
-        with open(nama_file, "r", encoding="utf-8") as f:
-            data_dict = json.load(f)
-        return json_to_node(data_dict)
+            with open(nama_file, "r", encoding="utf-8") as f:
+                data_dict = json.load(f)
+            return json_to_node(data_dict)
 
 class DirectoryTree:
     def __init__(self):
@@ -53,12 +58,14 @@ class DirectoryTree:
                 elif pilihan == "2":
                     return "File"
                 else:
-                    print("Tipe salah. Silahkan input ulang") 
+                    print("Tipe salah. Silahkan input ulang")
+        
         tipe = inputTipe()
         # Cek input tipe, apakah Folder atau bukan
         if tipe not in ["Folder","File"]:
             print("Tipe harus 'folder' atau 'file'")
             return
+        
         nama = input(f"Masukan nama {tipe}: ")
         # Cek apakah nama file/folder sudah digunakan
         for child in self.current.children:
@@ -66,8 +73,10 @@ class DirectoryTree:
                 print("Nama sudah digunakan!")
                 return
         
+        modtime = datetime.now().strftime("%d/%m?%Y %H:%M %p")
+
         # simpan dengan nama,tipe Folder/File
-        node = Node(nama, tipe)
+        node = Node(nama, tipe, modtime)
         node.children = []
         node.parent = self.current
         self.current.children.append(node)
@@ -82,7 +91,7 @@ class DirectoryTree:
         sorted_children = sorted(self.current.children, key=lambda x: x.name.lower())
         print(f"===Isi Folder{self.current.name}===")
         for child in sorted_children:
-            print(f"[{child.tipe.upper()}] {child.name}")
+            print(f"[{"📄" if child.tipe.upper() == "FILE" else "📁"}] {child.name.ljust(25)} {child.modtime}")
 
     def ubah_nama(self, nama_lama, nama_baru):
         cek = False
@@ -95,6 +104,7 @@ class DirectoryTree:
             if child.name == nama_lama:
                 child.name = nama_baru
                 print("Berhasil mengganti nama.")
+                child.modtime = datetime.now().strftime("%d/%m?%Y %H:%M %p")
                 cek = True
         if not cek:
             print("Folder/file tidak ditemukan")
@@ -128,12 +138,15 @@ class DirectoryTree:
         for child in self.current.children:
             if child.tipe == 'Folder':
                 print(f'[{child.tipe}] {child.name}')
+    
     def cek_all_child(self):
         print('\n', 'Path: ',self.path())
         print("\n====Daftar Folder====")
         
         for child in self.current.children:
             print(f'[{child.tipe}] {child.name}')
+
+
     def kembali(self):
         prev = self.history.pop()
         if prev:
@@ -152,6 +165,7 @@ class DirectoryTree:
         data = {
             "name" : node.name,
             "tipe" : node.tipe,
+            "modtime" : node.modtime,
             "children" : [self.node_ke_dict(child) for child in node.children]
         }
         if node.parent is not None:
@@ -220,6 +234,8 @@ def main():
 
         else:
             print("Input tidak valid!")
+        
+        time.sleep(5)
 
 if __name__ == "__main__":
     main()
