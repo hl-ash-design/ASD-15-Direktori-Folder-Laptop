@@ -110,6 +110,7 @@ class DirectoryTree:
             print(f"[{"📄" if child.tipe.upper() == "FILE" else "📁"}] {child.name.ljust(25)} {child.modtime}")
 
     def ubah_nama(self, nama_lama, nama_baru):
+        
         cek = False
         for child in self.current.children:
             if child.name == nama_baru:
@@ -126,6 +127,14 @@ class DirectoryTree:
             print("Folder/file tidak ditemukan")
 
     def hapus(self, nama):
+        if not self.current.children:
+            print("Folder kosong")
+            return
+        # garis = "│   " * level + "├──"
+        sorted_children = sorted(self.current.children, key=lambda x: x.name.lower())
+        print(f"===Isi Folder {self.current.name}===")
+        for child in sorted_children:
+            print(f"[{"📄" if child.tipe.upper() == "FILE" else "📁"}] {child.name.ljust(25)} {child.modtime}")
         for child in self.current.children:
             if child.name == nama:
                 self.current.children.remove(child)
