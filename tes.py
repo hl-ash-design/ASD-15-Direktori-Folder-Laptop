@@ -149,9 +149,12 @@ class DirectoryTree:
 
         # Validasi keyword agar case insensitive
         if keyword.lower() in node.name.lower():
-            parent_name = node.parent.name if node.parent else 'Root'
-            
-            print("Ditemukan:", f"{node.name} [Parent: {parent_name}]")
+            parent_path = []
+            parent_node = node.parent
+            while parent_node:
+                parent_path.append(parent_node.name)
+                parent_node = parent_node.parent
+            print("Ditemukan:", f"{node.name} [Path: {('/'.join(reversed(parent_path)))}/{node.name}]")
 
         for child in node.children:
             self.cari(child, keyword)
@@ -251,6 +254,7 @@ def main():
 
         elif pilihan == "4":
             tree.cek_all_child()
+            print()
             lama = input("Nama yang ingin diubah: ")
             baru = input("Nama baru: ")
             tree.ubah_nama(lama, baru)
@@ -275,7 +279,7 @@ def main():
         else:
             print("Input tidak valid!")
         
-        time.sleep(3)
+        time.sleep(2)
 
 if __name__ == "__main__":
     main()

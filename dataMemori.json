@@ -48,9 +48,16 @@
             "parent": "home"
         },
         {
-            "name": "Python",
+            "name": "Aliasi",
             "tipe": "Folder",
-            "modtime": "03/06/2026 14:10 PM",
+            "modtime": "03/06?2026 13:55 PM",
+            "children": [],
+            "parent": "home"
+        },
+        {
+            "name": "Samyang.png",
+            "tipe": "File",
+            "modtime": "03/06?2026 13:55 PM",
             "children": [],
             "parent": "home"
         }
