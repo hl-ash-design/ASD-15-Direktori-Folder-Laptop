@@ -29,13 +29,6 @@
                         }
                     ],
                     "parent": "Algoritmas"
-                },
-                {
-                    "name": "Data.txt",
-                    "tipe": "File",
-                    "modtime": "03/06/2026 11:12 AM",
-                    "children": [],
-                    "parent": "Algoritmas"
                 }
             ],
             "parent": "home"
@@ -73,6 +66,20 @@
             "name": "Scoantil.txt",
             "tipe": "File",
             "modtime": "03/06/2026 14:31 PM",
+            "children": [],
+            "parent": "home"
+        },
+        {
+            "name": "& C:/Users/HP/AppData/Local/Programs/Python/Python313/python.exe \"c:/Users/HP/Documents/Tugas (kuliah)/Semester 2/Algoritma dan Struktur Data/ASD_15_File Reader/ASD-15-Direktori-Folder-Laptop/main.py\"",
+            "tipe": "Folder",
+            "modtime": "03/06/2026 15:56 PM",
+            "children": [],
+            "parent": "home"
+        },
+        {
+            "name": "ava",
+            "tipe": "Folder",
+            "modtime": "03/06/2026 15:57 PM",
             "children": [],
             "parent": "home"
         }
