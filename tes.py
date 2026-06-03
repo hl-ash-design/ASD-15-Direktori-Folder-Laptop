@@ -89,7 +89,7 @@ class DirectoryTree:
         # Cek apakah nama file/folder sudah digunakan
         nama = inputnama()
 
-        modtime = datetime.now().strftime("%d/%m?%Y %H:%M %p")
+        modtime = datetime.now().strftime("%d/%m/%Y %H:%M %p")
 
         # simpan dengan nama,tipe Folder/File
         node = Node(nama, tipe, modtime)

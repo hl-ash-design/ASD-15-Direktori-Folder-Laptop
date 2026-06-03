@@ -4,9 +4,9 @@
     "modtime": "03/06/2026 11:12 AM",
     "children": [
         {
-            "name": "Algoritma",
+            "name": "Algoritmaa",
             "tipe": "Folder",
-            "modtime": "03/06/2026 11:12 AM",
+            "modtime": "03/06/2026 13:30 PM",
             "children": [
                 {
                     "name": "Python",
@@ -28,14 +28,14 @@
                             "parent": "Python"
                         }
                     ],
-                    "parent": "Algoritma"
+                    "parent": "Algoritmaa"
                 },
                 {
                     "name": "Data.txt",
                     "tipe": "File",
                     "modtime": "03/06/2026 11:12 AM",
                     "children": [],
-                    "parent": "Algoritma"
+                    "parent": "Algoritmaa"
                 }
             ],
             "parent": "home"
