@@ -55,8 +55,8 @@ class DirectoryTree:
     # Fungsi Untuk menambah folder
     def tambah(self):
         print("\n===Pilih tipe===")
-        print("[FOLDER]")
-        print("[FILE]")
+        print("[1] FOLDER")
+        print("[2] FILE")
 
         def inputTipe():
             while True:
