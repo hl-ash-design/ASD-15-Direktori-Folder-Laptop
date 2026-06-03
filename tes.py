@@ -32,7 +32,7 @@ script_dir = os.path.dirname(os.path.abspath(__file__))
 nama_file = os.path.join(script_dir, "dataMemori.json")
 
 def json_to_node(json):
-        node = Node(json['name'], json['tipe'])
+        node = Node(json['name'], json['tipe'],json['modtime'])
         for child_data in json.get('children', []):
             node.children.append(json_to_node(child_data))
         return node
@@ -97,7 +97,7 @@ class DirectoryTree:
             return
         # garis = "│   " * level + "├──"
         sorted_children = sorted(self.current.children, key=lambda x: x.name.lower())
-        print(f"===Isi Folder{self.current.name}===")
+        print(f"===Isi Folder {self.current.name}===")
         for child in sorted_children:
             print(f"[{"📄" if child.tipe.upper() == "FILE" else "📁"}] {child.name.ljust(25)} {child.modtime}")
 
@@ -204,7 +204,7 @@ def main():
         print("7. Kambali")
         print("8. Simpan ke Json")
         print("9. Keluar")
-
+        print("=====================================")
         pilihan = input("Pilih: ")
 
         if pilihan == "1":
