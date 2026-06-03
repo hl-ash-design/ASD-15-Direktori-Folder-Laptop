@@ -230,11 +230,13 @@ def main():
 
         elif pilihan == "3":
             tree.cek_child()
+            print()
             nama = input("Masuk: ")
             tree.masuk(nama)
 
         elif pilihan == "4":
             tree.cek_all_child()
+            print()
             lama = input("Nama yang ingin diubah: ")
             baru = input("Nama baru: ")
             tree.ubah_nama(lama, baru)
@@ -260,7 +262,7 @@ def main():
         else:
             print("Input tidak valid!")
         
-        time.sleep(3)
+        time.sleep(2)
 
 if __name__ == "__main__":
     main()

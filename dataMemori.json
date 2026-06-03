@@ -46,6 +46,20 @@
             "modtime": "03/06/2026 11:12 AM",
             "children": [],
             "parent": "home"
+        },
+        {
+            "name": "Aliasi",
+            "tipe": "Folder",
+            "modtime": "03/06?2026 13:55 PM",
+            "children": [],
+            "parent": "home"
+        },
+        {
+            "name": "Samyang.png",
+            "tipe": "File",
+            "modtime": "03/06?2026 13:55 PM",
+            "children": [],
+            "parent": "home"
         }
     ]
 }
