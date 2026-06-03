@@ -1,4 +1,3 @@
-<<<<<<< HEAD:tes.py
 from datetime import datetime
 import time
 import json
@@ -286,7 +285,6 @@ def main():
 
 if __name__ == "__main__":
     main()
-=======
 from datetime import datetime
 import time
 import json
@@ -571,4 +569,3 @@ def main():
 
 if __name__ == "__main__":
     main()
->>>>>>> ea7b01994fea3f74267901671620cab424db7828:main.py
