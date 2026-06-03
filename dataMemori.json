@@ -46,6 +46,13 @@
             "modtime": "03/06/2026 11:12 AM",
             "children": [],
             "parent": "home"
+        },
+        {
+            "name": "Python",
+            "tipe": "Folder",
+            "modtime": "03/06/2026 14:10 PM",
+            "children": [],
+            "parent": "home"
         }
     ]
 }

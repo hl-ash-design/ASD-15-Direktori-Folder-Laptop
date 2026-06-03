@@ -126,7 +126,7 @@ class DirectoryTree:
         if not cek:
             print("Folder/file tidak ditemukan")
 
-    def hapus(self, nama):
+    def hapus(self):
         if not self.current.children:
             print("Folder kosong")
             return
@@ -135,6 +135,7 @@ class DirectoryTree:
         print(f"===Isi Folder {self.current.name}===")
         for child in sorted_children:
             print(f"[{"📄" if child.tipe.upper() == "FILE" else "📁"}] {child.name.ljust(25)} {child.modtime}")
+        nama = input("Masukan Nama yang ingin dihapus: ")
         for child in self.current.children:
             if child.name == nama:
                 self.current.children.remove(child)
@@ -155,7 +156,15 @@ class DirectoryTree:
         for child in node.children:
             self.cari(child, keyword)
 
-    def masuk(self, nama):
+    def masuk(self):
+        if not self.current.children:
+            print("Folder kosong")
+            return
+        sorted_children = sorted(self.current.children, key=lambda x: x.name.lower())
+        print(f"===Isi Folder {self.current.name}===")
+        for child in sorted_children:
+            print(f"[{"📄" if child.tipe.upper() == "FILE" else "📁"}] {child.name.ljust(25)} {child.modtime}")
+        nama = input("Masuk: ")
         if self.current.children:
             for child in self.current.children:
                 if child.name == nama and child.tipe == "Folder":
@@ -238,9 +247,7 @@ def main():
             tree.tampilan()
 
         elif pilihan == "3":
-            tree.cek_child()
-            nama = input("Masuk: ")
-            tree.masuk(nama)
+            tree.masuk()
 
         elif pilihan == "4":
             tree.cek_all_child()
@@ -249,8 +256,7 @@ def main():
             tree.ubah_nama(lama, baru)
 
         elif pilihan == "5":
-            nama = input("Masukan nama yang ingin dihapus: ")
-            tree.hapus(nama)
+            tree.hapus()
 
         elif pilihan == "6":
             keyword = input("Masukkan kata kunci: ")
