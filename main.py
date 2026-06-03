@@ -460,6 +460,9 @@ class DirectoryTree:
                     self.history.push(self.current)
                     self.current = child
                     return
+                elif child.name == nama and child.tipe == "File":
+                     print("Tidak bisa masuk ke file!")
+                     return
         print("Folder tidak ditemukan.")
 
     def cek_child(self):
