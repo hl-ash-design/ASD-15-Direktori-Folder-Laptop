@@ -1,12 +1,13 @@
 from datetime import datetime
 import time
 import json
+import os
 
 class Node:
-    def __init__(self, name, tipe, time):
+    def __init__(self, name, tipe, mdtime=datetime.now().strftime("%d/%m/%Y %H:%M %p")):
         self.name = name
         self.tipe = tipe
-        self.modtime = time
+        self.modtime = mdtime
         self.children = []
         self.parent = None
 
@@ -25,9 +26,10 @@ class stack:
 
     def is_empty(self):
         return len(self.data) == 0
-    
-nama_file = "dataMemori.json"
 
+# Mengubah metode akses json 
+script_dir = os.path.dirname(os.path.abspath(__file__))
+nama_file = os.path.join(script_dir, "dataMemori.json")
 
 def json_to_node(data, parent=None):
         if data:
@@ -55,8 +57,8 @@ class DirectoryTree:
     # Fungsi Untuk menambah folder
     def tambah(self):
         print("\n===Pilih tipe===")
-        print("1. [FOLDER]")
-        print("2. [FILE]")
+        print("[1] FOLDER")
+        print("[2] FILE")
 
         def inputTipe():
             while True:
@@ -118,7 +120,7 @@ class DirectoryTree:
             if child.name == nama_lama:
                 child.name = nama_baru
                 print("Berhasil mengganti nama.")
-                child.modtime = datetime.now().strftime("%d/%m?%Y %H:%M %p")
+                child.modtime = datetime.now().strftime("%d/%m/%Y %H:%M %p")
                 cek = True
         if not cek:
             print("Folder/file tidak ditemukan")
@@ -200,9 +202,8 @@ class DirectoryTree:
 
         with open(filename, "w", encoding="utf-8") as f:
             json.dump(data_dict, f, indent=4)
-        print(f"Berhasil simpan data")
-
-
+        print("Berhasil simpan data")
+    
 def main():
     tree = DirectoryTree()
 
@@ -218,7 +219,7 @@ def main():
         print("7. Kambali")
         print("8. Simpan ke Json")
         print("9. Keluar")
-
+        print("=====================================")
         pilihan = input("Pilih: ")
 
         if pilihan == "1":
@@ -259,8 +260,7 @@ def main():
         else:
             print("Input tidak valid!")
         
-        time.sleep(5)
-
+        time.sleep(3)
 
 if __name__ == "__main__":
     main()
