@@ -1,43 +1,29 @@
 {
     "name": "home",
-    "tipe": "Folder",
+    "tipe": "Root",
+    "modtime": "03/06?2026 11:13 AM",
     "children": [
         {
             "name": "Algoritma",
             "tipe": "Folder",
+            "modtime": "03/06?2026 11:29 AM",
             "children": [
                 {
-                    "name": "Sort",
+                    "name": "Python",
                     "tipe": "Folder",
+                    "modtime": "03/06?2026 11:31 AM",
                     "children": [
                         {
-                            "name": "Bitcoin",
+                            "name": "Algoritma",
                             "tipe": "Folder",
+                            "modtime": "03/06?2026 11:32 AM",
                             "children": [],
-                            "parent": "Sort"
-                        },
-                        {
-                            "name": "Bitcoin.txt",
-                            "tipe": "File",
-                            "children": [],
-                            "parent": "Sort"
+                            "parent": "Python"
                         }
                     ],
                     "parent": "Algoritma"
-                },
-                {
-                    "name": "Data.txt",
-                    "tipe": "File",
-                    "children": [],
-                    "parent": "Algoritma"
                 }
             ],
-            "parent": "home"
-        },
-        {
-            "name": "Data.txt",
-            "tipe": "File",
-            "children": [],
             "parent": "home"
         }
     ]
