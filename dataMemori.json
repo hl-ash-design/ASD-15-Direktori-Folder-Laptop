@@ -4,9 +4,9 @@
     "modtime": "03/06/2026 11:12 AM",
     "children": [
         {
-            "name": "Algoritmaa",
+            "name": "Algoritmas",
             "tipe": "Folder",
-            "modtime": "03/06/2026 13:30 PM",
+            "modtime": "03/06/2026 14:16 PM",
             "children": [
                 {
                     "name": "Python",
@@ -28,14 +28,14 @@
                             "parent": "Python"
                         }
                     ],
-                    "parent": "Algoritmaa"
+                    "parent": "Algoritmas"
                 },
                 {
                     "name": "Data.txt",
                     "tipe": "File",
                     "modtime": "03/06/2026 11:12 AM",
                     "children": [],
-                    "parent": "Algoritmaa"
+                    "parent": "Algoritmas"
                 }
             ],
             "parent": "home"
@@ -51,7 +51,15 @@
             "name": "Aliasi",
             "tipe": "Folder",
             "modtime": "03/06?2026 13:55 PM",
-            "children": [],
+            "children": [
+                {
+                    "name": "i",
+                    "tipe": "Folder",
+                    "modtime": "03/06/2026 14:15 PM",
+                    "children": [],
+                    "parent": "Aliasi"
+                }
+            ],
             "parent": "home"
         },
         {
