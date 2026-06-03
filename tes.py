@@ -11,6 +11,7 @@ class Node:
         self.children = []
         self.parent = None
 
+
 class stack:
     def __init__(self):
         self.data = []
@@ -22,7 +23,7 @@ class stack:
         if self.data:
             return self.data.pop()
         return None
-    
+
     def is_empty(self):
         return len(self.data) == 0
 
@@ -36,6 +37,7 @@ def json_to_node(json):
             node.children.append(json_to_node(child_data))
         return node
 
+
 def bacaData(nama_file):
             with open(nama_file, "r", encoding="utf-8") as f:
                 data_dict = json.load(f)
@@ -46,14 +48,16 @@ class DirectoryTree:
         self.root = bacaData(nama_file)
         self.current = self.root
         self.history = stack()
-    
+
     def cek_current(self):
         return self.current.name
+
     # Fungsi Untuk menambah folder
     def tambah(self):
         print("\n===Pilih tipe===")
         print("[FOLDER]")
         print("[FILE]")
+
         def inputTipe():
             while True:
                 pilihan = input("Pilih tipe (1/2): ")
@@ -66,7 +70,7 @@ class DirectoryTree:
         
         tipe = inputTipe()
         # Cek input tipe, apakah Folder atau bukan
-        if tipe not in ["Folder","File"]:
+        if tipe not in ["Folder", "File"]:
             print("Tipe harus 'folder' atau 'file'")
             return
         
@@ -91,7 +95,7 @@ class DirectoryTree:
         if not self.current.children:
             print("Folder kosong")
             return
-        # garis = "│   " * level + "├──" 
+        # garis = "│   " * level + "├──"
         sorted_children = sorted(self.current.children, key=lambda x: x.name.lower())
         print(f"===Isi Folder{self.current.name}===")
         for child in sorted_children:
@@ -112,7 +116,7 @@ class DirectoryTree:
                 cek = True
         if not cek:
             print("Folder/file tidak ditemukan")
-        
+
     def hapus(self, nama):
         for child in self.current.children:
             if child.name == nama:
@@ -124,29 +128,29 @@ class DirectoryTree:
     def cari(self, node, keyword):
         if keyword.lower() in node.name.lower():
             print("Ditemukan:", node.name)
-            
+
         for child in node.children:
             self.cari(child, keyword)
 
     def masuk(self, nama):
         for child in self.current.children:
-            if child.name == nama and child.tipe =="Folder":
+            if child.name == nama and child.tipe == "Folder":
                 self.history.push(self.current)
                 self.current = child
-                return 
+                return
         print("Folder tidak ditemukan.")
-        
+
     def cek_child(self):
-        print('\n', 'Path: ',self.path())
+        print("\n", "Path: ", self.path())
         print("\n====Daftar Folder====")
         for child in self.current.children:
             if child.tipe == 'Folder':
                 print(f'[{child.tipe}] {child.name}')
     
     def cek_all_child(self):
-        print('\n', 'Path: ',self.path())
+        print("\n", "Path: ", self.path())
         print("\n====Daftar Folder====")
-        
+
         for child in self.current.children:
             print(f'[{child.tipe}] {child.name}')
 
@@ -165,6 +169,7 @@ class DirectoryTree:
             path_list.append(node.name)
             node = node.parent
         return "/".join(reversed(path_list))
+
     def node_ke_dict(self, node):
         data = {
             "name" : node.name,
@@ -173,13 +178,14 @@ class DirectoryTree:
             "children" : [self.node_ke_dict(child) for child in node.children]
         }
         if node.parent is not None:
-            data['parent'] = node.parent.name
+            data["parent"] = node.parent.name
 
         return data
+
     def simpan_json(self, filename):
         data_dict = self.node_ke_dict(self.root)
 
-        with open(filename, 'w', encoding='utf-8') as f:
+        with open(filename, "w", encoding="utf-8") as f:
             json.dump(data_dict, f, indent=4)
         print("Berhasil simpan data")
     
