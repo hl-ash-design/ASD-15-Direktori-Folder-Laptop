@@ -130,7 +130,6 @@ class DirectoryTree:
         if not self.current.children:
             print("Folder kosong")
             return
-        # garis = "│   " * level + "├──"
         sorted_children = sorted(self.current.children, key=lambda x: x.name.lower())
         print(f"===Isi Folder {self.current.name}===")
         for child in sorted_children:
