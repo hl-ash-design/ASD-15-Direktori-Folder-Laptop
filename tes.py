@@ -185,7 +185,7 @@ class DirectoryTree:
     
     def cek_all_child(self):
         print("\n", "Path: ", self.path())
-        print("\n====Daftar Folder====")
+        print("\n====Daftar====")
 
         for child in self.current.children:
             print(f'[{ "📄" if child.tipe.upper() == "FILE" else "📁" }] {child.name}')
