@@ -79,14 +79,14 @@ class DirectoryTree:
             while True:
                 nama = input(f"Masukan nama {tipe}: ")
                 nama_terpakai = False
-                
+                # Cek apakah nama file/folder sudah digunakan
                 for child in self.current.children:
                     if child.name == nama:
                         print("Nama sudah digunakan!, Silahkan masukan ulang")
                         nama_terpakai = True
                 if not nama_terpakai:
                     return nama
-        # Cek apakah nama file/folder sudah digunakan
+        
         nama = inputnama()
 
         modtime = datetime.now().strftime("%d/%m/%Y %H:%M %p")
