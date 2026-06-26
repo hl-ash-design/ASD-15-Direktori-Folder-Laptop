@@ -190,7 +190,7 @@ class DirectoryTree:
         print("\n====Daftar Folder====")
 
         for child in self.current.children:
-            print(f'[{ "📄" if child.tipe.upper() == "FILE" else "📁" }] {child.name}')
+            print(f'[{ "📄" if child.tipe.upper() == "FILE" else "📁" }] {child.name.ljust(25) if len(child.name) < 25 else child.name[:22] + '...'}')
 
 
     def kembali(self):

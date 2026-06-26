@@ -4,36 +4,6 @@
     "modtime": "03/06/2026 11:12 AM",
     "children": [
         {
-            "name": "Algoritmas",
-            "tipe": "Folder",
-            "modtime": "03/06/2026 14:16 PM",
-            "children": [
-                {
-                    "name": "Python",
-                    "tipe": "Folder",
-                    "modtime": "03/06/2026 11:12 AM",
-                    "children": [
-                        {
-                            "name": "Algoritma",
-                            "tipe": "Folder",
-                            "modtime": "03/06/2026 11:12 AM",
-                            "children": [],
-                            "parent": "Python"
-                        },
-                        {
-                            "name": "Bitcoin.txt",
-                            "tipe": "File",
-                            "modtime": "03/06/2026 11:12 AM",
-                            "children": [],
-                            "parent": "Python"
-                        }
-                    ],
-                    "parent": "Algoritmas"
-                }
-            ],
-            "parent": "home"
-        },
-        {
             "name": "Data.txt",
             "tipe": "File",
             "modtime": "03/06/2026 11:12 AM",
@@ -49,6 +19,20 @@
                     "name": "i",
                     "tipe": "Folder",
                     "modtime": "03/06/2026 14:15 PM",
+                    "children": [],
+                    "parent": "Aliasi"
+                },
+                {
+                    "name": "Algoritma",
+                    "tipe": "Folder",
+                    "modtime": "26/06/2026 17:30 PM",
+                    "children": [],
+                    "parent": "Aliasi"
+                },
+                {
+                    "name": "Algoritmas.txt",
+                    "tipe": "File",
+                    "modtime": "26/06/2026 17:31 PM",
                     "children": [],
                     "parent": "Aliasi"
                 }
@@ -80,6 +64,20 @@
             "name": "ava",
             "tipe": "Folder",
             "modtime": "03/06/2026 15:57 PM",
+            "children": [],
+            "parent": "home"
+        },
+        {
+            "name": "Algoritma",
+            "tipe": "Folder",
+            "modtime": "26/06/2026 17:29 PM",
+            "children": [],
+            "parent": "home"
+        },
+        {
+            "name": "Algoritmas",
+            "tipe": "Folder",
+            "modtime": "26/06/2026 17:29 PM",
             "children": [],
             "parent": "home"
         }
